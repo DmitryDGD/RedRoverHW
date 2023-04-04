@@ -110,8 +110,10 @@ public class Utility {
             }
         }
         System.out.println(maxPremium);
-    }
 
+
+
+    }
 
     public  static void main(String[] args) {
 
@@ -127,8 +129,6 @@ public class Utility {
         maxOfSubordinates(employees);
         minPremium(employees);
         maxPremium(employees);
-
-
 
 
     }

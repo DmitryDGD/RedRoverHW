@@ -1,4 +1,4 @@
-package new8_1_baseClass;
+package beginnerHomeworks.new8_1_baseClass;
 
 public class Employee extends BaseEmployee {
 
