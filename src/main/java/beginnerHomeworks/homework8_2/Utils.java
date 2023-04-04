@@ -1,9 +1,9 @@
 package beginnerHomeworks.homework8_2;
 
-public class Utility {
+public class Utils {
 
 
-    public static String salaryBudget(Employee[] employeesarray, String name) {
+    public static String checkEmployeeFullName(Employee[] employeesarray, String name) {
         String result = "";
         for (Employee employee : employeesarray) {
             if (employee.getName().equals(name)) {
@@ -26,65 +26,63 @@ public class Utility {
         return result;
     }
 
-    public static void salaryBudget(Employee[] employeesarray) {
+    public static int baseSalarySum(Employee[] employeesarray) {
         int result = 0;
         for (Employee employee : employeesarray) {
             result += employee.getBaseSalary();
         }
-        System.out.println(result);
+        return result;
     }
 
-    public static void searchMinSalary(Employee[] employeesarray) {
+    public static int searchMinSalary(Employee[] employeesarray) {
         int minSalary = employeesarray[0].baseSalary;
         for (Employee employee : employeesarray) {
             if (employee.getBaseSalary() < minSalary) {
                 minSalary = employee.baseSalary;
             }
         }
-        System.out.println(minSalary);
+        return minSalary;
     }
 
-    public static void searchMaxSalary(Employee[] employeesarray) {
+    public static int searchMaxSalary(Employee[] employeesarray) {
         int maxSalary = 0;
         for (Employee employee : employeesarray) {
             if (employee.getBaseSalary() > maxSalary) {
                 maxSalary = employee.baseSalary;
             }
         }
-        System.out.println(maxSalary);
+        return maxSalary;
     }
 
-    public static void minOfSubordinates(Employee[] employeesarray) {
+    public static int minOfSubordinates(Employee[] employeesarray) {
         int minSubordinates = Integer.MAX_VALUE;
 
         for (Employee employee : employeesarray) {
-            if (employee instanceof Manager) {
-                if ((((Manager) employee).getNumberOfSubordinates()) < minSubordinates) {
+            if (employee instanceof Manager && ((((Manager) employee).getNumberOfSubordinates()) < minSubordinates)) {
                     minSubordinates = ((Manager) employee).numberOfSubordinates;
-                }
+
             }
 
         }
 
 
-        System.out.println(minSubordinates);
+        return minSubordinates;
     }
 
-    public static void maxOfSubordinates(Employee[] employeesarray) {
+    public static int maxOfSubordinates(Employee[] employeesarray) {
         int maxSubordinates = Integer.MIN_VALUE;
         for (Employee employee : employeesarray) {
-            if (employee instanceof Manager) {
-                if ((((Manager) employee).getNumberOfSubordinates()) > maxSubordinates) {
+            if (employee instanceof Manager && ((((Manager) employee).getNumberOfSubordinates()) > maxSubordinates)) {
                     maxSubordinates = ((Manager) employee).numberOfSubordinates;
-                }
+
             }
 
         }
 
-        System.out.println(maxSubordinates);
+        return maxSubordinates;
     }
 
-    public static void minPremium(Employee[] employeesarrya) {
+    public static int minPremium(Employee[] employeesarrya) {
         int minPremium = Integer.MAX_VALUE;
         int premium = 0;
         for (Employee employee : employeesarrya) {
@@ -95,10 +93,10 @@ public class Utility {
                 }
             }
         }
-        System.out.println(minPremium);
+        return minPremium;
     }
 
-    public static void maxPremium(Employee[] employeesarrya) {
+    public static int maxPremium(Employee[] employeesarrya) {
         int maxPremium = Integer.MIN_VALUE;
         int premium = 0;
         for (Employee employee : employeesarrya) {
@@ -109,7 +107,7 @@ public class Utility {
                 }
             }
         }
-        System.out.println(maxPremium);
+        return maxPremium;
 
 
 
@@ -120,15 +118,15 @@ public class Utility {
         Employee[] employees = {new Worker("Bill", 10), new Manager("Alex", 20, 5),
                 new Director("Bob", 50, 7), new Worker("Brand", 10)};
 
-        System.out.println(salaryBudget(employees, "Alex"));
+        System.out.println(checkEmployeeFullName(employees, "Alex"));
         System.out.println(checkEmployeeStringName(employees, "Ale"));
-        salaryBudget(employees);
-        searchMinSalary(employees);
-        searchMaxSalary(employees);
-        minOfSubordinates(employees);
-        maxOfSubordinates(employees);
-        minPremium(employees);
-        maxPremium(employees);
+        System.out.println("Зарплатный бюджет = " + baseSalarySum(employees));
+        System.out.println("Минимальная зарплата = " + searchMinSalary(employees));
+        System.out.println("Максимальная зарплата = " + searchMaxSalary(employees));
+        System.out.println("Минимальное количество подчиненных = " + minOfSubordinates(employees));
+        System.out.println("Максимальное количество подчиненных = " + maxOfSubordinates(employees));
+        System.out.println("Минимальная премия = " + minPremium(employees));
+        System.out.println(maxPremium(employees));
 
 
     }
